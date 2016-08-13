@@ -1,0 +1,24 @@
+{
+  "sa": {
+    "dbConnectFile": "<%= @cfgdir -%>/secrets/boulder_sa_dburl",
+    "maxDBConns": 10,
+    "maxConcurrentRPCServerRequests": 16,
+    "debugAddr": "localhost:8003",
+    "amqp": {
+      "serverURLFile": "<%= @cfgdir -%>/secrets/amqp_url",
+      "insecure": true,
+      "serviceQueue": "boulder.SA.server"
+    }
+  },
+
+  "statsd": {
+    "server": "localhost:8125",
+    "prefix": "Boulder"
+  },
+
+  "syslog": {
+    "network": "",
+    "server": "",
+    "stdoutlevel": 6
+  }
+}

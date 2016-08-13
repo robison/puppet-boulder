@@ -1,0 +1,58 @@
+{
+  "ocspUpdater": {
+    "dbConnectFile": "<%= @cfgdir -%>/secrets/ocsp_updater_dburl",
+    "maxDBConns": 10,
+    "newCertificateWindow": "1s",
+    "oldOCSPWindow": "2s",
+    "missingSCTWindow": "1m",
+    "revokedCertificateWindow": "1s",
+    "newCertificateBatchSize": 1000,
+    "oldOCSPBatchSize": 5000,
+    "missingSCTBatchSize": 5000,
+    "revokedCertificateBatchSize": 1000,
+    "ocspMinTimeToExpiry": "72h",
+    "oldestIssuedSCT": "72h",
+    "signFailureBackoffFactor": 1.2,
+    "signFailureBackoffMax": "30m",
+    "debugAddr": "localhost:8006",
+    "amqp": {
+      "serverURLFile": "<%= @cfgdir -%>/secrets/amqp_url",
+      "insecure": true,
+      "SA": {
+        "server": "boulder.SA.server",
+        "rpcTimeout": "15s"
+      },
+      "CA": {
+        "server": "boulder.CA.server",
+        "rpcTimeout": "15s"
+      },
+      "Publisher": {
+        "server": "boulder.Publisher.server",
+        "rpcTimeout": "15s"
+      }
+    }
+  },
+
+  "statsd": {
+    "server": "localhost:8125",
+    "prefix": "Boulder"
+  },
+
+  "syslog": {
+    "network": "",
+    "server": "",
+    "stdoutlevel": 6
+  },
+
+  "common": {
+    "issuerCert": "<%= @issuercert -%>",
+    "ct": {
+      "logs": [
+        {
+          "uri": "http://<%= @ct_server -%>:4500",
+          "key": "<%= @ct_server_pkey -%>"
+        }
+      ]
+    }
+  }
+}

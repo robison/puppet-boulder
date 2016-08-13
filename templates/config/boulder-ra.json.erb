@@ -1,0 +1,62 @@
+{
+  "ra": {
+    "rateLimitPoliciesFilename": "<%= @cfgdir -%>/policy/rate-limit-policies.yml",
+    "maxConcurrentRPCServerRequests": 16,
+    "maxContactsPerRegistration": 100,
+    "dnsTries": 3,
+    "debugAddr": "localhost:8002",
+    "hostnamePolicyFile": "<%= @cfgdir -%>/policy/hostname-policy.json",
+    "maxNames": 1000,
+    "doNotForceCN": true,
+    "amqp": {
+      "serverURLFile": "<%= @cfgdir -%>/secrets/amqp_url",
+      "insecure": true,
+      "serviceQueue": "boulder.RA.server",
+      "VA": {
+        "server": "boulder.VA.server",
+        "rpcTimeout": "60s"
+      },
+      "SA": {
+        "server": "boulder.SA.server",
+        "rpcTimeout": "15s"
+      },
+      "CA": {
+        "server": "boulder.CA.server",
+        "rpcTimeout": "15s"
+      }
+    }
+  },
+
+  "allowedSigningAlgos": {
+    "rsa": true,
+    "ecdsanistp256": true,
+    "ecdsanistp384": true,
+    "ecdsanistp521": false
+  },
+
+  "pa": {
+    "challenges": {
+      "dns-01": true,
+      "tls-sni-01": true,
+      "http-01": true
+    },
+    "enforcePolicyWhitelist": true
+  },
+
+  "statsd": {
+    "server": "localhost:8125",
+    "prefix": "Boulder"
+  },
+
+  "syslog": {
+    "network": "",
+    "server": "",
+    "stdoutlevel": 6
+  },
+
+  "common": {
+    "dnsResolver": "<%= @dns_resolver -%>",
+    "dnsTimeout": "10s",
+    "dnsAllowLoopbackAddresses": true
+  }
+}

@@ -1,0 +1,14 @@
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.debian.pcsc-lite.access_card" &&
+        action.lookup("reader") == '<%= @pkcs11cardlabel -%>' &&
+        subject.user == "<%= @svcusr -%>") {
+            return polkit.Result.YES;
+    }
+});
+
+polkit.addRule(function(action, subject) {
+    if (action.id == "org.debian.pcsc-lite.access_pcsc" &&
+        subject.user == "<%= @svcusr -%>") {
+            return polkit.Result.YES;
+    }
+});

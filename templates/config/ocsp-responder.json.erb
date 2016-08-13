@@ -1,0 +1,27 @@
+{
+  "ocspResponder": {
+    "dbConnectFile": "<%= @cfgdir -%>/secrets/ocsp_responder_dburl",
+    "maxDBConns": 10,
+    "path": "/",
+    "listenAddress": "localhost:4002",
+    "maxAge": "10s",
+    "shutdownStopTimeout": "10s",
+    "shutdownKillTimeout": "1m",
+    "debugAddr": "localhost:8005"
+  },
+
+  "statsd": {
+    "server": "localhost:8125",
+    "prefix": "Boulder"
+  },
+
+  "syslog": {
+    "network": "",
+    "server": "",
+    "stdoutlevel": 6
+  },
+
+  "common": {
+    "issuerCert": "<%= @issuercert -%>"
+  }
+}
